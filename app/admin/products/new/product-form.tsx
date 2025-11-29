@@ -31,6 +31,9 @@ interface Category {
 export default function ProductForm({ categories }: { categories: Category[] }) {
     const [state, formAction, isPending] = useActionState(createProduct, null);
 
+    console.log('Categories in form:', categories);
+    console.log('Categories count in form:', categories.length);
+
     return (
         <form action={formAction}>
             <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
@@ -90,11 +93,17 @@ export default function ProductForm({ categories }: { categories: Category[] }) 
                                             <SelectValue placeholder="Select a category" />
                                         </SelectTrigger>
                                         <SelectContent>
-                                            {categories.map((category) => (
-                                                <SelectItem key={category.id} value={category.id}>
-                                                    {category.name}
-                                                </SelectItem>
-                                            ))}
+                                            {categories && categories.length > 0 ? (
+                                                categories.map((category) => (
+                                                    <SelectItem key={category.id} value={category.id}>
+                                                        {category.name}
+                                                    </SelectItem>
+                                                ))
+                                            ) : (
+                                                <div className="p-2 text-sm text-muted-foreground">
+                                                    No categories available. Please add a category first.
+                                                </div>
+                                            )}
                                         </SelectContent>
                                     </Select>
                                 </div>
