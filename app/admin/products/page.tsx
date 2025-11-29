@@ -54,7 +54,7 @@ export default async function ProductsPage() {
                         Ürün kataloğunuzu yönetin.
                     </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="overflow-x-auto">
                     <Table>
                         <TableHeader>
                             <TableRow>
@@ -79,8 +79,10 @@ export default async function ProductsPage() {
                                         {/* Placeholder for image */}
                                         <div className="h-16 w-16 rounded bg-muted" />
                                     </TableCell>
-                                    <TableCell className="font-medium">
-                                        {product.name}
+                                    <TableCell className="font-medium max-w-[200px]">
+                                        <div className="truncate" title={product.name}>
+                                            {product.name}
+                                        </div>
                                     </TableCell>
                                     <TableCell>
                                         {product.category.name}

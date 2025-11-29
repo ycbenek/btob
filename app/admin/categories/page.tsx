@@ -56,7 +56,7 @@ export default async function CategoriesPage() {
                         Ürün kategorilerinizi yönetin.
                     </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="overflow-x-auto">
                     <Table>
                         <TableHeader>
                             <TableRow>

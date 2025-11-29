@@ -52,7 +52,7 @@ export default async function SlidersPage() {
                         Ana sayfa sliderlarını yönetin.
                     </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="overflow-x-auto">
                     <Table>
                         <TableHeader>
                             <TableRow>
