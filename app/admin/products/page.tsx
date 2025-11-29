@@ -29,6 +29,8 @@ export default async function ProductsPage() {
         }
     });
 
+    type ProductWithCategory = typeof products[0];
+
     return (
         <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between">
@@ -68,7 +70,7 @@ export default async function ProductsPage() {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {products.map((product) => (
+                            {products.map((product: ProductWithCategory) => (
                                 <TableRow key={product.id}>
                                     <TableCell className="hidden sm:table-cell">
                                         {/* Placeholder for image */}

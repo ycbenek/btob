@@ -27,6 +27,8 @@ export default async function SlidersPage() {
         }
     });
 
+    type SliderType = typeof sliders[0];
+
     return (
         <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between">
@@ -65,7 +67,7 @@ export default async function SlidersPage() {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {sliders.map((slider: any) => (
+                            {sliders.map((slider: SliderType) => (
                                 <TableRow key={slider.id}>
                                     <TableCell className="hidden sm:table-cell">
                                         {/* eslint-disable-next-line @next/next/no-img-element */}

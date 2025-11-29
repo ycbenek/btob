@@ -31,6 +31,8 @@ export default async function CategoriesPage() {
         }
     });
 
+    type CategoryWithCount = typeof categories[0];
+
     return (
         <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between">
@@ -70,7 +72,7 @@ export default async function CategoriesPage() {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {categories.map((category) => (
+                            {categories.map((category: CategoryWithCount) => (
                                 <TableRow key={category.id}>
                                     <TableCell className="hidden sm:table-cell">
                                         {/* Placeholder for image */}
