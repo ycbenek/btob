@@ -39,6 +39,10 @@ export default async function Home() {
     orderBy: { order: 'asc' },
   });
 
+  console.log('Categories count:', categories.length);
+  console.log('Sliders count:', sliders.length);
+  console.log('Featured products count:', featuredProducts.length);
+
   type CategoryType = typeof categories[0];
   type ProductType = typeof featuredProducts[0];
 
@@ -54,18 +58,22 @@ export default async function Home() {
               Kategoriler
             </h2>
             <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-              {categories.map((category: CategoryType) => (
-                <Link key={category.id} href={`/categories/${category.slug}`} className="group flex flex-col items-center gap-4">
-                  <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white shadow-sm border border-border flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-md group-hover:scale-105 group-hover:border-primary/20">
-                    <div className="text-muted-foreground/50 font-serif italic">
-                      {category.name}
+              {categories.length > 0 ? (
+                categories.map((category: CategoryType) => (
+                  <Link key={category.id} href={`/categories/${category.slug}`} className="group flex flex-col items-center gap-4">
+                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white shadow-sm border border-border flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-md group-hover:scale-105 group-hover:border-primary/20">
+                      <div className="text-muted-foreground/50 font-serif italic">
+                        {category.name}
+                      </div>
                     </div>
-                  </div>
-                  <span className="text-lg font-medium text-gray-700 group-hover:text-primary transition-colors">
-                    {category.name}
-                  </span>
-                </Link>
-              ))}
+                    <span className="text-lg font-medium text-gray-700 group-hover:text-primary transition-colors">
+                      {category.name}
+                    </span>
+                  </Link>
+                ))
+              ) : (
+                <p className="text-muted-foreground">Henüz kategori eklenmemiş.</p>
+              )}
             </div>
           </div>
         </section>
