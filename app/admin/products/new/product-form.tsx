@@ -40,43 +40,46 @@ export default function ProductForm({ categories }: { categories: Category[] }) 
                 <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
                     <Card>
                         <CardHeader>
-                            <CardTitle>Product Details</CardTitle>
+                            <CardTitle>Ürün Detayları</CardTitle>
                             <CardDescription>
-                                Enter the details for the new product.
+                                Yeni ürün için detayları girin.
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
                             <div className="grid gap-6">
                                 <div className="grid gap-3">
-                                    <Label htmlFor="name">Name</Label>
+                                    <Label htmlFor="name">Ürün Adı</Label>
                                     <Input
                                         id="name"
                                         name="name"
                                         type="text"
                                         className="w-full"
                                         required
+                                        placeholder="Ürün adını girin"
                                     />
                                 </div>
                                 <div className="grid gap-3">
-                                    <Label htmlFor="slug">Slug</Label>
+                                    <Label htmlFor="slug">Slug (URL)</Label>
                                     <Input
                                         id="slug"
                                         name="slug"
                                         type="text"
                                         className="w-full"
                                         required
+                                        placeholder="urun-adi"
                                     />
                                 </div>
                                 <div className="grid gap-3">
-                                    <Label htmlFor="description">Description</Label>
+                                    <Label htmlFor="description">Açıklama</Label>
                                     <Textarea
                                         id="description"
                                         name="description"
                                         className="min-h-32"
+                                        placeholder="Ürün açıklamasını girin"
                                     />
                                 </div>
                                 <div className="grid gap-3">
-                                    <Label htmlFor="price">Price</Label>
+                                    <Label htmlFor="price">Fiyat (₺)</Label>
                                     <Input
                                         id="price"
                                         name="price"
@@ -84,13 +87,14 @@ export default function ProductForm({ categories }: { categories: Category[] }) 
                                         step="0.01"
                                         className="w-full"
                                         required
+                                        placeholder="0.00"
                                     />
                                 </div>
                                 <div className="grid gap-3">
-                                    <Label htmlFor="category">Category</Label>
+                                    <Label htmlFor="category">Kategori</Label>
                                     <Select name="categoryId" required>
                                         <SelectTrigger>
-                                            <SelectValue placeholder="Select a category" />
+                                            <SelectValue placeholder="Bir kategori seçin" />
                                         </SelectTrigger>
                                         <SelectContent>
                                             {categories && categories.length > 0 ? (
@@ -101,20 +105,20 @@ export default function ProductForm({ categories }: { categories: Category[] }) 
                                                 ))
                                             ) : (
                                                 <div className="p-2 text-sm text-muted-foreground">
-                                                    No categories available. Please add a category first.
+                                                    Kategori bulunamadı. Lütfen önce bir kategori ekleyin.
                                                 </div>
                                             )}
                                         </SelectContent>
                                     </Select>
                                 </div>
                                 <div className="grid gap-3">
-                                    <Label htmlFor="image">Image URL</Label>
+                                    <Label htmlFor="image">Resim URL</Label>
                                     <Input
                                         id="image"
                                         name="image"
                                         type="url"
                                         className="w-full"
-                                        placeholder="https://example.com/image.jpg"
+                                        placeholder="https://example.com/resim.jpg"
                                     />
                                 </div>
                             </div>
@@ -124,11 +128,11 @@ export default function ProductForm({ categories }: { categories: Category[] }) 
                 <div className="grid auto-rows-max items-start gap-4 lg:gap-8">
                     <Card>
                         <CardHeader>
-                            <CardTitle>Actions</CardTitle>
+                            <CardTitle>İşlemler</CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <Button size="sm" type="submit" className="w-full">
-                                Save Product
+                            <Button size="sm" type="submit" className="w-full" disabled={isPending}>
+                                {isPending ? 'Kaydediliyor...' : 'Ürünü Kaydet'}
                             </Button>
                         </CardContent>
                     </Card>
