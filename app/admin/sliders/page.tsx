@@ -20,6 +20,9 @@ import {
 import db from "@/lib/db";
 import { deleteSlider } from "@/lib/actions";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function SlidersPage() {
     const sliders = await db.slider.findMany({
         orderBy: {

@@ -12,6 +12,9 @@ import {
 import db from "@/lib/db";
 import { HeroSlider } from "@/components/hero-slider";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function Home() {
   const categories = await db.category.findMany({
     include: {

@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import db from "@/lib/db";
 import ProductForm from "./product-form";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function NewProductPage() {
     const categories = await db.category.findMany();
 

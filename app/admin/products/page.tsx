@@ -19,6 +19,9 @@ import {
 } from "@/components/ui/table";
 import db from "@/lib/db";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function ProductsPage() {
     const products = await db.product.findMany({
         include: {
