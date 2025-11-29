@@ -28,6 +28,8 @@ export default async function CategoryPage({
         notFound();
     }
 
+    type ProductType = typeof category.products[0];
+
     return (
         <div className="flex min-h-screen flex-col">
             <PublicHeader />
@@ -42,7 +44,7 @@ export default async function CategoryPage({
                 </div>
 
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {category.products.map((product) => {
+                    {category.products.map((product: ProductType) => {
                         const images = product.images ? JSON.parse(product.images) : [];
                         const mainImage = images[0];
                         return (

@@ -36,6 +36,9 @@ export default async function Home() {
     orderBy: { order: 'asc' },
   });
 
+  type CategoryType = typeof categories[0];
+  type ProductType = typeof featuredProducts[0];
+
   return (
     <div className="flex min-h-screen flex-col">
       <PublicHeader />
@@ -48,7 +51,7 @@ export default async function Home() {
               Kategoriler
             </h2>
             <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-              {categories.map((category) => (
+              {categories.map((category: CategoryType) => (
                 <Link key={category.id} href={`/categories/${category.slug}`} className="group flex flex-col items-center gap-4">
                   <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white shadow-sm border border-border flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-md group-hover:scale-105 group-hover:border-primary/20">
                     <div className="text-muted-foreground/50 font-serif italic">
@@ -77,7 +80,7 @@ export default async function Home() {
             </div>
 
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {featuredProducts.map((product) => {
+              {featuredProducts.map((product: ProductType) => {
                 const images = product.images ? JSON.parse(product.images) : [];
                 const mainImage = images[0];
                 return (
